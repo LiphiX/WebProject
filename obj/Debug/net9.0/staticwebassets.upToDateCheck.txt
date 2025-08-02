@@ -1,0 +1,148 @@
+wwwroot\css\site.css
+wwwroot\favicon.ico
+wwwroot\js\site.js
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\lib\jquery-validation\dist\additional-methods.js
+wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+wwwroot\lib\jquery-validation\LICENSE.md
+wwwroot\lib\jquery\dist\jquery.js
+wwwroot\lib\jquery\dist\jquery.min.js
+wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\jquery\dist\jquery.slim.js
+wwwroot\lib\jquery\dist\jquery.slim.min.js
+wwwroot\lib\jquery\dist\jquery.slim.min.map
+wwwroot\lib\jquery\LICENSE.txt
+wwwroot\images\MissingImage.png
+wwwroot\images\post\post-48x48.png
+wwwroot\images\post\post-96x96.png
+wwwroot\images\AccountIcon.png
+wwwroot\images\UserIcon.png
+wwwroot\css\style.css
+wwwroot\images\publications\Герой Нашего Времени.png
+wwwroot\images\publications\Анна Каренина.jpg
+wwwroot\images\publications\Большой Шлем.jpg
+wwwroot\images\publications\Вишнёвый сад.jpg
+wwwroot\images\publications\Война и Мир.jpg
+wwwroot\images\publications\Два капитана.jpg
+wwwroot\images\publications\Доктор Живаго.jpg
+wwwroot\images\publications\Евгений Онегин.jpg
+wwwroot\images\publications\Капитанская дочка.png
+wwwroot\images\publications\Мёртвые души.jpg
+wwwroot\images\publications\Отцы и дети.png
+wwwroot\images\publications\Преступление и Наказание.png
+wwwroot\images\publications\Произведение Идиот.png
+wwwroot\images\publications\Ревизор.jpg
+wwwroot\images\publications\Тихий Дон.png
+wwwroot\images\publications\Песчаная учительница.png
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\css\site.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\css\style.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\favicon.ico
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\js\site.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation\dist\additional-methods.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery-validation\LICENSE.md
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\dist\jquery.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\dist\jquery.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\dist\jquery.min.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\dist\jquery.slim.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\dist\jquery.slim.min.js
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\dist\jquery.slim.min.map
+D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\lib\jquery\LICENSE.txt

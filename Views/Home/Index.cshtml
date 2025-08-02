@@ -1,0 +1,42 @@
+﻿@model List<Publication>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="ps-5 pe-5">
+    <div class="d-flex justify-content-around align-item-center btn-group">
+        <a class="btn btn-outline-primary">Коллекция изданий</a>
+        <a class="btn btn-outline-primary">Коллекция изданий</a>
+        <a class="btn btn-outline-primary">Коллекция изданий</a>
+    </div>
+</div>
+
+
+<div class="mt-5 carousel carouse-dark" data-bs-ride="carousel" data-bs-interval="1500">
+    <div class="carousel-inner">
+        @if(Model == null)
+        {
+            <div class="d-flex justify-content-center">
+                <p>На данный момент издания недоступны или отсутствуют к рекомендации.</p>
+            </div>
+        }
+        else{
+            foreach (var item in Model)
+            {
+                <div class="carousel-item d-flex justify-content-center align-content-center">
+                    <div class="card-body">
+                        <picture>
+                            <img class="d-block w-100 card-img-top image" src="@Url.Content($"~{(item.ImageAddress == null ? "/images/MissingImage.png" : item.ImageAddress)}")" alt="Изображение"/>
+                        </picture>
+
+                        <div class="card-text flex-column align-content-center justify-content-center">
+                            <p class="mt-2">@item.Title</p>
+                            <p class="mt-2">@item.Author</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
