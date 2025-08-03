@@ -1,5 +1,27 @@
 wwwroot\css\site.css
+wwwroot\css\style.css
 wwwroot\favicon.ico
+wwwroot\images\AccountIcon.png
+wwwroot\images\MissingImage.png
+wwwroot\images\post\post-48x48.png
+wwwroot\images\post\post-96x96.png
+wwwroot\images\publications\Анна Каренина.jpg
+wwwroot\images\publications\Большой Шлем.jpg
+wwwroot\images\publications\Вишнёвый сад.jpg
+wwwroot\images\publications\Война и Мир.jpg
+wwwroot\images\publications\Герой Нашего Времени.png
+wwwroot\images\publications\Два капитана.jpg
+wwwroot\images\publications\Доктор Живаго.jpg
+wwwroot\images\publications\Евгений Онегин.jpg
+wwwroot\images\publications\Капитанская дочка.png
+wwwroot\images\publications\Мёртвые души.jpg
+wwwroot\images\publications\Отцы и дети.png
+wwwroot\images\publications\Песчаная учительница.png
+wwwroot\images\publications\Преступление и Наказание.png
+wwwroot\images\publications\Произведение Идиот.png
+wwwroot\images\publications\Ревизор.jpg
+wwwroot\images\publications\Тихий Дон.png
+wwwroot\images\UserIcon.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -61,28 +83,6 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\images\MissingImage.png
-wwwroot\images\post\post-48x48.png
-wwwroot\images\post\post-96x96.png
-wwwroot\images\AccountIcon.png
-wwwroot\images\UserIcon.png
-wwwroot\css\style.css
-wwwroot\images\publications\Герой Нашего Времени.png
-wwwroot\images\publications\Анна Каренина.jpg
-wwwroot\images\publications\Большой Шлем.jpg
-wwwroot\images\publications\Вишнёвый сад.jpg
-wwwroot\images\publications\Война и Мир.jpg
-wwwroot\images\publications\Два капитана.jpg
-wwwroot\images\publications\Доктор Живаго.jpg
-wwwroot\images\publications\Евгений Онегин.jpg
-wwwroot\images\publications\Капитанская дочка.png
-wwwroot\images\publications\Мёртвые души.jpg
-wwwroot\images\publications\Отцы и дети.png
-wwwroot\images\publications\Преступление и Наказание.png
-wwwroot\images\publications\Произведение Идиот.png
-wwwroot\images\publications\Ревизор.jpg
-wwwroot\images\publications\Тихий Дон.png
-wwwroot\images\publications\Песчаная учительница.png
 D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\css\site.css
 D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\css\style.css
 D:\Programs\CursProject\ASP.NET\PostOffice\wwwroot\favicon.ico

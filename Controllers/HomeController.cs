@@ -11,7 +11,7 @@ namespace PostOffice.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(databaseContext.Publications.ToList());
         }
 
         public IActionResult Privacy()

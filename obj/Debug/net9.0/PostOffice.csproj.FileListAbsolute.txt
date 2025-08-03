@@ -147,4 +147,5 @@ D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\refint\PostOffice.dl
 D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\PostOffice.pdb
 D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\PostOffice.genruntimeconfig.cache
 D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\ref\PostOffice.dll
-D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\compressed\eoklygdjxe-j5bvw20r0p.gz
+D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\PostOffice.sourcelink.json
+D:\Programs\CursProject\ASP.NET\PostOffice\obj\Debug\net9.0\compressed\eoklygdjxe-lnbsclwgd7.gz

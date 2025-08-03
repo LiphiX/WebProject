@@ -33,7 +33,7 @@ public class PostOfficeContext : DbContext
         //Database.EnsureDeleted();
         //Database.EnsureCreated();
 
-        var service = new DatabaseService(this);
-        service.SourceInitialization();
+        //var service = new DatabaseService(this);
+        //service.SourceInitialization();
     }
 }

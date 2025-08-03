@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = "Home Page";
+
+    //Выбор первых 12 элементов коллекции.
+    var collection = Model.Where(item => item.Id >= 1 && item.Id <= 21).ToList();
 }
 
 <div class="ps-5 pe-5">
@@ -13,30 +16,37 @@
 </div>
 
 
-<div class="mt-5 carousel carouse-dark" data-bs-ride="carousel" data-bs-interval="1500">
-    <div class="carousel-inner">
-        @if(Model == null)
-        {
-            <div class="d-flex justify-content-center">
-                <p>На данный момент издания недоступны или отсутствуют к рекомендации.</p>
-            </div>
-        }
-        else{
-            foreach (var item in Model)
+<div class="d-flex justify-content-center">
+    <div id="MainCarousel" class="mt-5 carousel carouse-dark w-75 slide" data-bs-ride="carousel" data-bs-interval="1500">
+        <div class="carousel-inner">
+            @if (Model == null)
             {
-                <div class="carousel-item d-flex justify-content-center align-content-center">
-                    <div class="card-body">
-                        <picture>
-                            <img class="d-block w-100 card-img-top image" src="@Url.Content($"~{(item.ImageAddress == null ? "/images/MissingImage.png" : item.ImageAddress)}")" alt="Изображение"/>
-                        </picture>
-
-                        <div class="card-text flex-column align-content-center justify-content-center">
-                            <p class="mt-2">@item.Title</p>
-                            <p class="mt-2">@item.Author</p>
-                        </div>
-                    </div>
+                <div class="d-flex justify-content-center">
+                    <p>На данный момент издания недоступны или отсутствуют к рекомендации.</p>
                 </div>
             }
-        }
+            else
+            {
+
+                for (var i = 0; i < collection.Count - 3; i += 3)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        @await Html.PartialAsync("~/Views/Shared/PartialView/MainCarouselItem.cshtml", collection[i])
+                        @await Html.PartialAsync("~/Views/Shared/PartialView/MainCarouselItem.cshtml", collection[i + 1])
+                        @await Html.PartialAsync("~/Views/Shared/PartialView/MainCarouselItem.cshtml", collection[i + 2])
+                    </div>
+                }
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#MainCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#MainCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                </button>
+            }
+        </div>
     </div>
 </div>
