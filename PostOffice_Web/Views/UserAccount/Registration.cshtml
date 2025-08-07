@@ -1,0 +1,41 @@
+﻿@using PostOffice.ViewModels
+@model RegistrationViewModel
+
+<div class="d-flex justify-content-center align-items-center">
+	<form asp-controller="UserAccount" asp-action="Registration" method="post" class="card-form w-50 p-5">
+		<div class="d-flex flex-column justify-content-center align-content-center">
+			<div class="row">
+				<div class="mb-3 col">
+					<label asp-for="Surname" class="form-label">Фамилия:</label>
+					<input asp-for="Surname" class="form-control" type="text" />
+					<span asp-validation-for="Surname" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3 col">
+					<label asp-for="Name" class="form-label">Имя:</label>
+					<input asp-for="Name" class="form-control" type="text" />
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="Patronymic" class="form-label">Отчество:</label>
+				<input asp-for="Patronymic" class="form-control" type="text"/>
+				<span asp-validation-for="Patronymic" class="text-danger"></span>
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="Login" class="form-label">Логин:</label>
+				<input asp-for="Login" class="form-control" type="text" />
+				<span asp-validation-for="Login" class="text-danger"></span>
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="Password" class="form-label">Пароль:</label>
+				<input asp-for="Password" class="form-control" type="password" />
+				<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Сохранить</button>
+	</form>
+</div>

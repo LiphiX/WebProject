@@ -1,0 +1,20 @@
+﻿@model Publication
+
+<div class="card bg-transparent ms-4 me-4">
+    <picture class="card-img-top bg-dark card-image">
+        @if (Model.ImageAddress != null)
+        {
+            <img class="image card-image" src="@Url.Content($"~{Model.ImageAddress}")" alt="Изображение" />
+        }
+        else
+        {
+            <img class="image card-image h14" src="@Url.Content($"~/images/MissingImage.png")" alt="Изображение" />
+        }
+    </picture>
+
+    <div class="card-body text-white text-center d-md-block">
+        <p class="">@Model.Title</p>
+        <p class="mt-1">@Model.Author</p>
+    </div>
+</div>
+
