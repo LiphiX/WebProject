@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
+using PostOffice.Models;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
 using PostOffice.ViewModels;
@@ -13,6 +16,8 @@ using System.Threading.Tasks;
 namespace PostOffice.Controllers;
 public class UserAccountController(PostOfficeContext postOfficeContext) : Controller
 {
+	private UserService _userService = new(postOfficeContext);
+
 	[HttpGet]
 	public IActionResult Registration()
 	{
@@ -30,11 +35,11 @@ public class UserAccountController(PostOfficeContext postOfficeContext) : Contro
 		await postOfficeContext.People.AddAsync(person);
 
 		UserAccount userAccount = new() { Login = viewModel.Login, Password = viewModel.Password, PersonId = person.Id };
-		await postOfficeContext.UserAccounts.AddAsync(userAccount);
+		await _userService.AddAsync(userAccount);
 
 		//HttpContext.Session.SetString("SessionId", Guid.NewGuid().ToString());
 
-		UserAuthenticate(userAccount);
+		await UserAuthenticate(userAccount);
 
 		return Redirect("/Home/Index");
 	}
@@ -51,14 +56,14 @@ public class UserAccountController(PostOfficeContext postOfficeContext) : Contro
 		if (!ModelState.IsValid)
 			return View("Authorization", viewModel);
 
-		UserAccount? userAccount = await postOfficeContext.UserAccounts.FirstOrDefaultAsync(item => item.Login == viewModel.Login && item.Password == viewModel.Password);
+		UserAccount? userAccount = await _userService.FindUserAccountAsync(viewModel.Login, viewModel.Password);
 		if(userAccount == null)
 		{
 			ModelState.AddModelError("", "Не удалось войти в учётную запись.");
 			return View("Authorization", viewModel);
 		}
 		
-		UserAuthenticate(userAccount);
+		await UserAuthenticate(userAccount);
 
 		return Redirect("/Home/Index");
 	}
@@ -68,8 +73,9 @@ public class UserAccountController(PostOfficeContext postOfficeContext) : Contro
 		//Запись данных о пользователя для его идентификации.
 		var claims = new List<Claim>()
 		{
-			new Claim(ClaimsIdentity.DefaultNameClaimType, userAccount.Id.ToString()),
+			new Claim(ClaimTypes.Name, userAccount.Login),
 			new Claim(ClaimsIdentity.DefaultRoleClaimType, userAccount.Person.Role.ToString()),
+			new Claim(ClaimTypes.NameIdentifier, userAccount.Id.ToString()),
 		};
 
 		//Сохранение данных о пользователя в объекте "удостоверения".
@@ -77,5 +83,22 @@ public class UserAccountController(PostOfficeContext postOfficeContext) : Contro
 
 		//Установка в локальное хранилище пользователя зашифрованных Cookie для аунтентификации последующих запросов пользователя.
 		await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+		//var temp = User.Claims.Where(item => item.Type == ClaimTypes.NameIdentifier).ToList();
+		//var data = temp[0].Value;
+	}
+
+	public async Task<IActionResult> LogOut()
+	{
+		await HttpContext.SignOutAsync();
+
+		return Redirect("/Home/Index");
+	}
+
+	[HttpGet]
+	[Authorize]
+	public IActionResult PersonalAccount()
+	{
+		return View("PersonalAccount");
 	}
 }

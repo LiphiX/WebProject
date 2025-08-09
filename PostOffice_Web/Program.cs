@@ -40,7 +40,7 @@ if (!app.Environment.IsDevelopment())
 //Открытие доступа к обслуживанию файлов из корневой директории (wwwroot).
 app.UseStaticFiles();
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 //Подключение поддержки маршрутизации.
 app.UseRouting();

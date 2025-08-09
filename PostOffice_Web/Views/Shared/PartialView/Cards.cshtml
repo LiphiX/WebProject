@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Publication>
+
+@{
+	var iteration = 0;
+}
+@for (int i = 0; i < Model.Count() - 3; i += 4)
+{
+	<div class="d-flex flex-row">
+		@{
+			var collection = Model.Skip(iteration * 4).Take(4);
+		}
+		@foreach (var item in collection)
+		{
+			@await Html.PartialAsync("~/Views/Shared/PartialView/Card.cshtml", item)
+			;
+		}
+	</div>
+	iteration += 1;
+}

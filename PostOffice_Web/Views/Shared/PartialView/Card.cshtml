@@ -1,0 +1,33 @@
+﻿@model Publication
+
+
+
+<div class="card bg-transparent ms-2 me-5 pt-4">
+    <a class="nav-link" role="button" asp-controller="Publications" asp-action="Subscribe" asp-route-id="@Model.Id">
+        <picture class="card-img-top bg-dark card-image" role="button">
+            @if (Model.ImageAddress != null && Model.ImageAddress != "" && Url.Content($"~{Model.ImageAddress}") != null)
+            {
+                <img class="image w-100 rounded-top" src="@Url.Content($"~{Model.ImageAddress}")" alt="Изображение" />
+            }
+            else
+            {
+                <img class="image w-100 rounded-top" src="@Url.Content($"~/images/MissingImage.png")" alt="Изображение" />
+            }
+        </picture>
+    </a>
+
+    <ul class="card-body text-white d-flex flex-column">
+        <li class="d-flex">
+            <p class="fw-bold text-overflow">@Model.Title</p>
+        </li>
+        <li class="d-flex justify-content-between opacity-75">
+            <p>Автор:</p>
+            <p class="text-overflow">@(Model.Author ?? "не указан")</p>
+        </li>
+        <li class="d-flex justify-content-between opacity-75">
+            <p>Стоимость издания:</p>
+            <p class="text-overflow">@Model.Cost</p>
+        </li>
+    </ul>
+</div>
+

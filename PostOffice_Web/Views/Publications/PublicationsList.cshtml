@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Publication>
+
+<div class="mb-5">
+	<div id="publications" class="d-flex align-items-center flex-column mt">
+		@await Html.PartialAsync("~/Views/Shared/PartialView/Cards.cshtml", Model);
+	</div>
+
+
+	<button id="uploadButton" class="btn btn-primary w-100 mt-5">Загрузить</button>
+</div>
+
+@section Scripts{
+	<script src="~/js/publications.js"></script>
+}

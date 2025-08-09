@@ -1,14 +1,14 @@
 ﻿@model Publication
 
-<div class="card bg-transparent ms-4 me-4">
+<div class="card bg-transparent ms-2 me-5 mb-3 pt-4">
     <picture class="card-img-top bg-dark card-image">
         @if (Model.ImageAddress != null)
         {
-            <img class="image card-image" src="@Url.Content($"~{Model.ImageAddress}")" alt="Изображение" />
+            <img class="image w-100 rounded-top" src="@Url.Content($"~{Model.ImageAddress}")" alt="Изображение" />
         }
         else
         {
-            <img class="image card-image h14" src="@Url.Content($"~/images/MissingImage.png")" alt="Изображение" />
+            <img class="image w-100 rounded-top" src="@Url.Content($"~/images/MissingImage.png")" alt="Изображение" />
         }
     </picture>
 
