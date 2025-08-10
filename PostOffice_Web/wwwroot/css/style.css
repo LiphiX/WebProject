@@ -131,3 +131,7 @@ main{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.publication-module{
+    height: 250px;
+}

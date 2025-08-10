@@ -1,1 +1,40 @@
-﻿@model Publication
+﻿@using PostOffice.ViewModels
+@model SubscriptionViewModel
+
+<div class="mx-auto row w-100 mt-5 ms-2">
+	<div class="d-flex flex-column col-lg-1 flex-grow-1">
+		<picture class="image w-100">
+			<img class="image publication-module" src="@Url.Content($"{Model.ImageAddress}")"/>
+		</picture>
+	</div>
+	<div class="d-flex flex-column me-2 align-items-start flex-grow-1 col-md-auto">
+		<div class="d-flex justify-content-between w-100 fw-bold fs-2">
+			<p>@(Model.Title).</p>
+		</div>
+		<div class="w-100">
+			<p class="opacity-50">Автор:</p>
+			<p>@Model.Author</p>
+		</div>
+		<div class="w-100">
+			<p class="opacity-50">Стоимость:</p>
+			<p>@Model.Cost</p>
+		</div>
+	</div>
+	<div class="d-flex flex-column me-2 col-lg-1 flex-grow-1">
+		<form asp-controller="Publications" asp-action="Subscribe" method="post">
+			@Html.HiddenFor(item => item.PublicationId)
+			@Html.HiddenFor(item => item.Title)
+			@Html.HiddenFor(item => item.Author)
+			@Html.HiddenFor(item => item.Cost)
+			@Html.HiddenFor(item => item.TypeOfPublication)
+			@Html.HiddenFor(item => item.ImageAddress)
+			
+			<div class="mb-2">
+				<label asp-for="DurationOfSubscription">Длительность подписки:</label>
+				<input asp-for="DurationOfSubscription" type="datetime" class="form-control"/>
+				<span asp-validation-for="DurationOfSubscription" class="text-danger"></span>
+			</div>
+			<button type="submit" class="btn btn-primary">Подписаться</button>
+		</form>
+	</div>
+</div>

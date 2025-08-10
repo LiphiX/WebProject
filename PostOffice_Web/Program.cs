@@ -15,8 +15,8 @@ builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.AccessDeniedPath = new PathString("/Authentication/Registration");
-        options.LoginPath = new PathString("/Authentication/Registration");
+        options.AccessDeniedPath = new PathString("/UserAccount/Registration");
+        options.LoginPath = new PathString("/UserAccount/Registration");
     });
 builder.Services.AddAuthorization();
 
