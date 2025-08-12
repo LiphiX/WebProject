@@ -73,7 +73,7 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 
 		if (person.Subscriber == null)
 		{
-			var subscriber = new Subscriber() { PersonId = person.Id };
+			var subscriber = new Subscriber() { PersonId = person.Id,  };
 			await postOfficeContext.Subscribers.AddAsync(subscriber);
 
 			if (person.Role == Roles.Guest)

@@ -10,5 +10,9 @@ public class SubscriberConfiguration : IEntityTypeConfiguration<Subscriber>
 		builder
 			.HasOne(item => item.Person)
 			.WithOne(item => item.Subscriber);
+
+		//builder
+		//	.HasOne(item => item.Address)
+		//	.WithMany(item => item.Subscribers);
 	}
 }

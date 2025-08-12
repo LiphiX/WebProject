@@ -22,10 +22,10 @@ public class DatabaseService(PostOfficeContext postOfficeContext)
 		postOfficeContext.Selections.AddRange(DataGeneration.SelectionGeneration(GetPeopleTable()));
 		postOfficeContext.SaveChanges();
 
-		list = postOfficeContext.Publications.ToList();
+		//list = postOfficeContext.Publications.ToList();
 		postOfficeContext.Addresses.AddRange(DataGeneration.AddressGeneration(500, GetSelections()));
 		postOfficeContext.SaveChanges();
-		postOfficeContext.Subscribers.AddRange(DataGeneration.SubscriberGeneration(GetPeopleTable()));
+		postOfficeContext.Subscribers.AddRange(DataGeneration.SubscriberGeneration(GetPeopleTable(), GetAddressesTable()));
 		postOfficeContext.SaveChanges();
 		postOfficeContext.Subscriptions.AddRange(DataGeneration.SubscriptionsGeneration(GetSubscribersTable(), GetPublicationsTable()));
 		postOfficeContext.SaveChanges();

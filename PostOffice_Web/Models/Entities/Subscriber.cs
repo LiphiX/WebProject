@@ -11,6 +11,9 @@ public class Subscriber
     public int PersonId { get; set; }
     public virtual Person Person { get; set; }
 
+    public int AddressId { get; set; }
+    public virtual Address Address { get; set; }
+
 	//Список подписок определяемого человека.
 	public virtual List<Subscription> Subscriptions { get; set; }
 }

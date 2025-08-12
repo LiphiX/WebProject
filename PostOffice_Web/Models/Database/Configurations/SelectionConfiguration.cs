@@ -9,7 +9,9 @@ public class SelectionConfiguration : IEntityTypeConfiguration<Selection>
     {
         builder
             .HasOne(item => item.Postman)
-            .WithMany(item => item.Selections);
+            .WithMany(item => item.Selections)
+            .HasForeignKey(item => item.PostmanId)
+            .OnDelete(DeleteBehavior.SetNull);
 
         //builder
         //    .HasMany(item => item.Addresses)

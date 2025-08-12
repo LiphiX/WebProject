@@ -110,6 +110,13 @@ main{
     color: white;
 }
 
+.form-select {
+    background: #212529;
+    border: 1px solid #495057;
+    color: white;
+
+}
+
 .form-label{
     color: rgba(255, 255, 255, 0.5)
 }

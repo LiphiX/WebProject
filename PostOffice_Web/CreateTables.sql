@@ -1,13 +1,13 @@
 use [PostOffice_Web]
 
-drop table if exists Subscribers
 drop table if exists Subscriptions
+drop table if exists Subscribers
 drop table if exists Addresses
 drop table if exists Selections
 drop table if exists People
 drop table if exists UserAccounts
 drop table if exists Publications
-drop table if exists TypeOfPublications
+drop table if exists TypesOfPublications
 drop table if exists Roles
 
 -- Справочная таблица ролей.
@@ -58,7 +58,7 @@ CREATE TABLE dbo.Addresses
 )
 
 -- Справочная таблица типов изданий.
-CREATE TABLE dbo.TypeOfPublications
+CREATE TABLE dbo.TypesOfPublications
 (
 	Id INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
 	[Name] NVARCHAR(20) NOT NULL
@@ -72,18 +72,9 @@ CREATE TABLE dbo.Publications
 	Cost INT NOT NULL,
 	TypeOfPublicationId INT NOT NULL
 
-	constraint FK_Publications_TypeOfPublicationId foreign key (TypeOfPublicationId) references dbo.TypeOfPublications
+	constraint FK_Publications_TypeOfPublicationId foreign key (TypeOfPublicationId) references dbo.TypesOfPublications
 )
 
--- Таблица подписок на издания.
-CREATE TABLE dbo.Subscriptions
-(
-	Id INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
-	SubscriptionStartDate date NOT NULL,
-	PublicationId INT NOT NULL,
-
-	constraint FK_Subscriptions_PublicationId foreign key (PublicationId) references dbo.Publications,
-)
 
 -- Таблица подписчиков на издания.
 CREATE TABLE dbo.Subscribers
@@ -91,9 +82,20 @@ CREATE TABLE dbo.Subscribers
 	Id INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
 	PersonId INT NOT NULL,
 	AddressId INT NOT NULL,
-	SubscriptionId INT NOT NULL,
 
 	constraint FK_Subscribers_PersonID foreign key (PersonId) references dbo.People,
 	constraint FK_Subscribers_AddressId foreign key (AddressId) references dbo.Addresses,
-	constraint FK_Subscribers_SubscriptionId foreign key (SubscriptionId) references dbo.Subscriptions
+)
+
+
+-- Таблица подписок на издания.
+CREATE TABLE dbo.Subscriptions
+(
+	Id INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	SubscriptionStartDate date NOT NULL,
+	PublicationId INT NOT NULL,
+	SubscriberId INT NOT NULL,
+
+	constraint FK_Subscriptions_PublicationId foreign key (PublicationId) references dbo.Publications,
+	constraint FK_Subscriptions_SubscriberId foreign key (SubscriberId) references dbo.Subscribers
 )

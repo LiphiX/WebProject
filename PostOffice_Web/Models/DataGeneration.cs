@@ -53,8 +53,8 @@ public static class DataGeneration
         return userAccounts;
     }
 
-    public static List<Subscriber> SubscriberGeneration(List<Person> people) =>
-        people.Where(item => item.Role == Roles.Subscriber).Select(item => new Subscriber() { PersonId = item.Id }).ToList();
+    public static List<Subscriber> SubscriberGeneration(List<Person> people, List<Address> addresses) =>
+        people.Where(item => item.Role == Roles.Subscriber).Select(item => new Subscriber() { PersonId = item.Id, AddressId = addresses[UtilsMethods.RandomValue(0, addresses.Count-1)].Id}).ToList();
 
     public static List<Subscription> SubscriptionsGeneration(List<Subscriber> subscribers, List<Publication> publications)
     {
