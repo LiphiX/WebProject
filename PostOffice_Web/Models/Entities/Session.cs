@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database.Configurations;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models.Entities;
 //Класс, который описывает состояния сессии пользователя.

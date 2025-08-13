@@ -21,19 +21,20 @@
 		</div>
 	</div>
 	<div class="d-flex flex-column me-2 col-lg-1 flex-grow-1">
-		<form asp-controller="Publications" asp-action="Subscribe" method="post">
-			@Html.HiddenFor(item => item.PublicationId)
-			@Html.HiddenFor(item => item.Title)
-			@Html.HiddenFor(item => item.Author)
-			@Html.HiddenFor(item => item.Cost)
-			@Html.HiddenFor(item => item.TypeOfPublication)
-			@Html.HiddenFor(item => item.ImageAddress)
-			
+		<form id="form" asp-controller="Publications" asp-action="Subscribe" method="post">
 			<div class="mb-2">
 				<label asp-for="DurationOfSubscription">Длительность подписки:</label>
 				<input asp-for="DurationOfSubscription" type="datetime" class="form-control"/>
 				<span asp-validation-for="DurationOfSubscription" class="text-danger"></span>
 			</div>
+
+			<div class="mb-2">
+				<label asp-for="Address">Адрес проживания:</label>
+				<select asp-for="Address" asp-items="@Model.Addresses" class="form-select">
+					<option disabled>Адрес проживания</option>
+				</select>
+			</div>
+
 			<button type="submit" class="btn btn-primary">Подписаться</button>
 		</form>
 	</div>

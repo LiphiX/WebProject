@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.User;
 
 namespace PostOffice.Models.Database.Configurations;
 public class SubscriberConfiguration : IEntityTypeConfiguration<Subscriber>

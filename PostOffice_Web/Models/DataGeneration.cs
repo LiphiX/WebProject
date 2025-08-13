@@ -1,17 +1,31 @@
 ﻿using ModelsLibrary.Infrastructure;
 using PostOffice.Infrastructure.Fabrics;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models;
 //Класс, в котором определены методы для формирование случайных данных для таблиц базы данных.
 public static class DataGeneration
 {
-    public static List<Person> PeopleGeneration(List<Roles> roles, int number)
+    public static List<Person> PeopleGeneration(int guestNumber, int subscriberNumber, int postmanNumber, int postalOperatorNumber, int directorNumber)
     {
         List<Person> people = new List<Person>();
-        for (int i = 0; i < number; i++)
-            people.Add(PeopleFabric.Fabric(roles));
+        for (int i = 0; i < subscriberNumber; i++)
+            people.Add(PeopleFabric.Fabric(Roles.Guest));
+
+        for (int i = 0; i < subscriberNumber; i++)
+            people.Add(PeopleFabric.Fabric(Roles.Subscriber));
+
+        for (int i = 0; i < postmanNumber; i++)
+            people.Add(PeopleFabric.Fabric(Roles.Postman));
+
+        for (int i = 0; i < postalOperatorNumber; i++)
+            people.Add(PeopleFabric.Fabric(Roles.PostalOperator));
+
+        for (int i = 0; i < directorNumber; i++)
+            people.Add(PeopleFabric.Fabric(Roles.PostalOperator));
         return people;
     }
     
@@ -24,14 +38,60 @@ public static class DataGeneration
         return publications;
     }
 
-    public static List<Selection> SelectionGeneration(List<Person> people) =>
-        people.Where(item => item.Role == Roles.Postman).Select(item => new Selection() { PostmanId = item.Id}).ToList();
+    public static List<Selection> SelectionGeneration(int number, List<Person> postmans)
+    {
+        List<Selection> selections = new();
+        if (number > postmans.Count)
+        {
+            int appointsmentNumber = (int)(number / postmans.Count);
+            for (int i = 0; i < number; i++)
+                for (int j = 0; j < appointsmentNumber; j++)
+                    selections.Add(new() { PostmanId = postmans[i].Id });
+        }
+        else
+            for(int i = 0; i < number; i++)
+                selections.Add(new() { PostmanId = postmans[i].Id });
+
+        return selections;
+    }
 
     public static List<Address> AddressGeneration(int number, List<Selection> selections)
     {
         List<Address> addresses = new();
-        for (int i = 0; i < number; i++)
-            addresses.Add(AddressFabric.Fabric(selections[UtilsMethods.RandomValue(0, selections.Count - 1)]));
+
+        //Определение количества адресов, которое может входить в один участок.
+        //Если количество представляет из себя нецелое число, то из этого следует:
+        //Результат < 1: один из участков не сможет содержать адреса.
+        //Результат > 1: один (или несколько) участков смогут содержать более одного адреса.
+        double addressesNumberInSelection = (double)number / (double)selections.Count;
+        
+        //Количество нераспределённых адресов.
+        int unallocatedAddresses = ((int)((addressesNumberInSelection - ((int)addressesNumberInSelection)) * selections.Count));
+
+        addresses.Clear();
+        //Количество итераций распределения.
+        //int iterationAllocation = UtilsMethods.RandomValue(unallocatedAddresses > 1 ? 1 : 0, unallocatedAddresses);
+        //int addingInOneItaration = (int)Math.Ceiling((double)unallocatedAddresses / iterationAllocation);
+
+        for (int i = 0; i < selections.Count; i++)
+        {
+            //addresses.Add(AddressFabric.Fabric(selections[UtilsMethods.RandomValue(0, selections.Count - 1)]));
+
+            //if (iterationAllocation != 0)
+                //for (int j = 0; j < iterationAllocation; j++)
+                    //i++;
+                    //for(int z = 0; z < addingInOneItaration; z++)
+                        //addresses.Add(AddressFabric.Fabric(selections[i]));
+
+            if(unallocatedAddresses != 0)
+            {
+                addresses.Add(AddressFabric.Fabric(selections[i]));
+				unallocatedAddresses--;
+			}
+
+            for(int j = 0; j < (int)addressesNumberInSelection; j++)
+                addresses.Add(AddressFabric.Fabric(selections[i]));
+        }
 
         return addresses;
     }

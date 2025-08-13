@@ -1,7 +1,7 @@
-﻿using PostOffice.Models.Entities;
-using System.Text;
+﻿using System.Text;
 
 using ModelsLibrary.Infrastructure;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Infrastructure.Fabrics;
 public static class UserAccountFabric

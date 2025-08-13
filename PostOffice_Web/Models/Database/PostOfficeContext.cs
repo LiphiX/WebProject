@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Infrastructure;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models.Database;
 public class PostOfficeContext : DbContext

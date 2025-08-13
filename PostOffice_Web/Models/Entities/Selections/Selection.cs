@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database.Configurations;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.User;
 
-namespace PostOffice.Models.Entities;
+namespace PostOffice.Models.Entities.Selections;
 //Класс, который описывает структуру данных для участков, которые обслуживаются назначенными почтальонами.
 [EntityTypeConfiguration(typeof(SelectionConfiguration))]
 public class Selection

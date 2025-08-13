@@ -1,5 +1,5 @@
 ﻿using ModelsLibrary.Infrastructure;
-using PostOffice.Models.Entities;
+using PostOffice.Models.Entities.User;
 
 namespace PostOffice.Infrastructure.Fabrics
 {
@@ -587,7 +587,7 @@ namespace PostOffice.Infrastructure.Fabrics
         };
         */
 		#endregion
-		public static Person Fabric(List<Roles> roles)
+		public static Person Fabric(Roles role)
         {
             var isMale = UtilsMethods.RandomValue(0, 10) > 5 ? true : false;
 
@@ -599,7 +599,7 @@ namespace PostOffice.Infrastructure.Fabrics
             string name = isMale ? MaleNames[UtilsMethods.RandomValue(0, MaleNames.Length - 1)] : FemaleNames[UtilsMethods.RandomValue(0, FemaleNames.Length - 1)];
             string patronymic = $"{Patronymics[UtilsMethods.RandomValue(0, Patronymics.Length - 1)]}{(isMale ? "ич" : "на")}";
 
-            return new() { Surname = surname, Name = name, Patronymic = patronymic, Role = roles[UtilsMethods.RandomValue(0, roles.Count - 1)]};
+            return new() { Surname = surname, Name = name, Patronymic = patronymic, Role = role};
         }
     }
 }

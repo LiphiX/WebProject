@@ -2,7 +2,9 @@
 using PostOffice.Models;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Infrastructure;
 public class DatabaseService(PostOfficeContext postOfficeContext)
@@ -12,18 +14,18 @@ public class DatabaseService(PostOfficeContext postOfficeContext)
 	//Начальное формирование данных всех таблиц.
 	public void SourceInitialization()
 	{
-		postOfficeContext.People.AddRange(DataGeneration.PeopleGeneration(Enum.GetValues(typeof(Roles)).Cast<Roles>().ToList(), 500));
+		postOfficeContext.People.AddRange(DataGeneration.PeopleGeneration(100, 200, 100, 100, 0));
 		postOfficeContext.SaveChanges();
 		postOfficeContext.UserAccounts.AddRange(DataGeneration.UserAccountGeneration(GetPeopleTable()));
 		postOfficeContext.SaveChanges();
 		var list = DataGeneration.PublicationGeneration(500);
 		postOfficeContext.Publications.AddRange(list);
 		postOfficeContext.SaveChanges();
-		postOfficeContext.Selections.AddRange(DataGeneration.SelectionGeneration(GetPeopleTable()));
+		postOfficeContext.Selections.AddRange(DataGeneration.SelectionGeneration(8, GetPeopleTable().Where(item => item.Role == Roles.Postman).ToList()));
 		postOfficeContext.SaveChanges();
 
 		//list = postOfficeContext.Publications.ToList();
-		postOfficeContext.Addresses.AddRange(DataGeneration.AddressGeneration(500, GetSelections()));
+		postOfficeContext.Addresses.AddRange(DataGeneration.AddressGeneration(45, GetSelections()));
 		postOfficeContext.SaveChanges();
 		postOfficeContext.Subscribers.AddRange(DataGeneration.SubscriberGeneration(GetPeopleTable(), GetAddressesTable()));
 		postOfficeContext.SaveChanges();
@@ -122,7 +124,7 @@ public class DatabaseService(PostOfficeContext postOfficeContext)
 
 	public async Task SourceInitializationAsync()
 	{
-		await postOfficeContext.People.AddRangeAsync(DataGeneration.PeopleGeneration(Enum.GetValues(typeof(Roles)).Cast<Roles>().ToList(), 500));
+		await postOfficeContext.People.AddRangeAsync(DataGeneration.PeopleGeneration(100, 200, 100, 100, 0));
 		await postOfficeContext.SaveChangesAsync();
 	}
 }

@@ -2,15 +2,18 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PostOffice.Infrastructure.Fabrics;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.User;
 using PostOffice.ViewModels;
 using System.Security.Claims;
 
 namespace PostOffice.Controllers;
 public class PublicationsController(PostOfficeContext postOfficeContext) : Controller
 {
+
 	[HttpGet]
 	public IActionResult PublicationsList()
 	{
@@ -43,7 +46,20 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 		if(publication == null)
 			return NotFound();
 
-		return View("Subscribe", new SubscriptionViewModel() { PublicationId = publication.Id, Title = publication.Title, Author = publication.Author, Cost = publication.Cost, TypeOfPublication = publication.TypeOfPublication.Name, ImageAddress = publication.ImageAddress });
+		var viewModel = new SubscriptionViewModel()
+		{
+			PublicationId = publication.Id,
+			Title = publication.Title,
+			Author = publication.Author,
+			Cost = publication.Cost,
+			TypeOfPublication = publication.TypeOfPublication.Name,
+			ImageAddress = publication.ImageAddress,
+			Addresses = new(postOfficeContext.Addresses.Select(item => $"{item.Street}, {item.Home}").AsEnumerable()),
+		};
+
+		HttpContext.Session.SetInt32("id", viewModel.PublicationId);
+
+		return View("Subscribe", viewModel);
 	}
 
 	[Authorize]
@@ -51,14 +67,22 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 	//[Route("/Publications/Subscribe")]
 	public async Task<IActionResult> Subscribe(SubscriptionViewModel subscriptionViewModel)
 	{
-		if (!ModelState.IsValid)
-		{
-			return View("Subscribe", subscriptionViewModel);
-		}
-
+		subscriptionViewModel.PublicationId = HttpContext.Session.GetInt32("id")!.Value;
 		var publication = await postOfficeContext.Publications.FirstOrDefaultAsync(item => item.Id == subscriptionViewModel.PublicationId);
 		if (publication == null)
 			return NotFound();
+
+		if (!ModelState.IsValid)
+		{
+			subscriptionViewModel.Title = publication.Title;
+			subscriptionViewModel.Author = publication.Author;
+			subscriptionViewModel.Cost = publication.Cost;
+			subscriptionViewModel.TypeOfPublication = publication.TypeOfPublication.Name;
+			subscriptionViewModel.ImageAddress = publication.ImageAddress;
+			subscriptionViewModel.Addresses = new(postOfficeContext.Addresses.Select(item => $"{item.Street}, {item.Home}").AsEnumerable());
+
+			return View("Subscribe", subscriptionViewModel);
+		}
 
 		var userAccountId = int.Parse(User.Claims.First(item => item.Type == ClaimTypes.NameIdentifier).Value);
 		var userAccount = await postOfficeContext.UserAccounts.FirstOrDefaultAsync(item => item.Id == userAccountId);

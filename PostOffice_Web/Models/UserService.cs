@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database;
-using PostOffice.Models.Entities;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models;
 public class UserService(PostOfficeContext postOfficeContext)

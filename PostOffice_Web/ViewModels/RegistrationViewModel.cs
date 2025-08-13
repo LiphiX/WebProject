@@ -13,8 +13,6 @@ public class RegistrationViewModel
 	[Required(ErrorMessage = "Отчество не было введено.")]
 	public string Patronymic { get; set; }
 
-	public List<Address> Addresses { get; set; }
-
 	public int AddressId { get; set; }
 
 	[StringLength(50, ErrorMessage = "Логин не может содержать более 50 символов.")]

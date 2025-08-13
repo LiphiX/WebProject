@@ -1,5 +1,5 @@
 ﻿using ModelsLibrary.Infrastructure;
-using PostOffice.Models.Entities;
+using PostOffice.Models.Entities.Selections;
 
 namespace PostOffice.Infrastructure.Fabrics;
 public static class AddressFabric
@@ -37,7 +37,7 @@ public static class AddressFabric
         "ул. Рокоссовского  "
     };
 
-    public static string[] Letters =
+    private static string[] _letters =
     {
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     };
@@ -45,8 +45,8 @@ public static class AddressFabric
     public static Address Fabric(Selection selection)
     {
         string streetName = Streets[UtilsMethods.RandomValue(0, Streets.Length - 1)];
-        string character = Letters[UtilsMethods.RandomValue(0, Letters.Length - 1)];
+        string character = _letters[UtilsMethods.RandomValue(0, _letters.Length - 1)];
 
-        return new() { AddressName = $"{streetName}, {UtilsMethods.RandomValue(10, 99)}{character}, {UtilsMethods.RandomValue(1, 352)}", SelectionId = selection.Id};
+        return new() { Street = $"{streetName}", Home = $"{UtilsMethods.RandomValue(10, 99)}{character}", SelectionId = selection.Id };
     }
 }

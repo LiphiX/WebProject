@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PostOffice.Models.Entities;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models.Configurations;
 class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>

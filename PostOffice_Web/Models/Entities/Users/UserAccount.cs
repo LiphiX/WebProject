@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Configurations;
+using PostOffice.Models.Entities.User;
 
-namespace PostOffice.Models.Entities;
+namespace PostOffice.Models.Entities.Users;
 //Класс, который описывает структуру данных для учётной записи пользователя.
 [EntityTypeConfiguration(typeof(UserAccountConfiguration))]
 public class UserAccount

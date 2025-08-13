@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PostOffice.Models.Entities;
+using PostOffice.Models.Entities.Selections;
 
 namespace PostOffice.Models.Database.Configurations;
 public class AddressConfiguration : IEntityTypeConfiguration<Address>
@@ -18,7 +18,12 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
 
         //Задание ограничений для свойств сущности Address.
         builder
-            .Property(item => item.AddressName)
+            .Property(item => item.Street)
+            .HasMaxLength(30)
+            .IsRequired();
+
+        builder
+            .Property(item => item.Home)
             .HasMaxLength(30)
             .IsRequired();
 

@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database.Configurations;
-using PostOffice.Models.Entities.Positions;
+using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.Users;
 
-namespace PostOffice.Models.Entities;
+namespace PostOffice.Models.Entities.User;
 //Класс, который описывает структуру данных для зарегистрированных в приложении людей.
 [EntityTypeConfiguration(typeof(PersonConfiguration))]
 public class Person
