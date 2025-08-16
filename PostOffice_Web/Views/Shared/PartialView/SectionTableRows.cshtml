@@ -1,0 +1,12 @@
+﻿@using PostOffice.ViewModels
+
+@model List<SectionViewModel>
+
+@{
+	var iteration = 0;
+}
+@foreach(var item in Model)
+{
+	item.RowNumber = ++iteration;
+	@await Html.PartialAsync("~/Views/Shared/PartialView/SectionTableRow.cshtml", item);
+}

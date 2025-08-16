@@ -12,14 +12,11 @@
 			<td>ФИО обслуживающего почтальона</td>
 		</thead>
 		<tbody>
-			@{
-				var iteration = 0;
-			}
-			@foreach (var item in Model)
-			{
-				item.RowNumber = ++iteration;
-				@await Html.PartialAsync("~/Views/Shared/PartialView/SectionTableRow.cshtml", item)
-			}
+			@await Html.PartialAsync("~/Views/Shared/PartialView/SectionTableRows.cshtml", Model)
 		</tbody>
 	</table>
 </div>
+
+@section Scripts{
+	<script src="~/js/sections.js"></script>
+}
