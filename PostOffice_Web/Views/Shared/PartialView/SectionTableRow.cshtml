@@ -1,0 +1,23 @@
+﻿@using PostOffice.ViewModels
+
+@model SectionViewModel
+
+<tr>
+	<td>@Model.RowNumber</td>
+	<td>@Model.AddressCount</td>
+	<td>@Model.SubscriptionCount</td>
+	<td>@Model.SubscriberCount</td>
+	<td>
+		<select asp-for="@Model.AppointmentPostman" class="btn btn-outline-light">
+			@foreach(var item in Model.Postmans)
+			{
+				if(item.Id == Model.AppointmentPostman.Id){
+					<option value="@item.Id" selected>@item.FullName</option>
+				}
+				else{
+					<option value="@item.Id">@item.FullName</option>
+				}
+			}
+		</select>
+	</td>
+</tr>

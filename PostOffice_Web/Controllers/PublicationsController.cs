@@ -5,14 +5,18 @@ using Microsoft.EntityFrameworkCore;
 using PostOffice.Infrastructure.Fabrics;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.Sections;
 using PostOffice.Models.Entities.User;
+using PostOffice.Models.Services;
 using PostOffice.ViewModels;
 using System.Security.Claims;
+using System.Security.Cryptography.Xml;
 
 namespace PostOffice.Controllers;
 public class PublicationsController(PostOfficeContext postOfficeContext) : Controller
 {
+
+	private QueriesService _queriesService = new(postOfficeContext);
 
 	[HttpGet]
 	public IActionResult PublicationsList()
@@ -54,7 +58,7 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 			Cost = publication.Cost,
 			TypeOfPublication = publication.TypeOfPublication.Name,
 			ImageAddress = publication.ImageAddress,
-			Addresses = new(postOfficeContext.Addresses.Select(item => $"{item.Street}, {item.Home}").AsEnumerable()),
+			Streets = new(postOfficeContext.Addresses.Select(item => item.Street).AsEnumerable()),
 		};
 
 		HttpContext.Session.SetInt32("id", viewModel.PublicationId);
@@ -72,17 +76,15 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 		if (publication == null)
 			return NotFound();
 
-		if (!ModelState.IsValid)
-		{
-			subscriptionViewModel.Title = publication.Title;
-			subscriptionViewModel.Author = publication.Author;
-			subscriptionViewModel.Cost = publication.Cost;
-			subscriptionViewModel.TypeOfPublication = publication.TypeOfPublication.Name;
-			subscriptionViewModel.ImageAddress = publication.ImageAddress;
-			subscriptionViewModel.Addresses = new(postOfficeContext.Addresses.Select(item => $"{item.Street}, {item.Home}").AsEnumerable());
+		subscriptionViewModel.Title = publication.Title;
+		subscriptionViewModel.Author = publication.Author;
+		subscriptionViewModel.Cost = publication.Cost;
+		subscriptionViewModel.TypeOfPublication = publication.TypeOfPublication.Name;
+		subscriptionViewModel.ImageAddress = publication.ImageAddress;
+		subscriptionViewModel.Streets = new(postOfficeContext.Addresses.Select(item => item.Street).AsEnumerable());
 
+		if (!ModelState.IsValid)
 			return View("Subscribe", subscriptionViewModel);
-		}
 
 		var userAccountId = int.Parse(User.Claims.First(item => item.Type == ClaimTypes.NameIdentifier).Value);
 		var userAccount = await postOfficeContext.UserAccounts.FirstOrDefaultAsync(item => item.Id == userAccountId);
@@ -90,31 +92,8 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 		if (userAccount == null)
 			return Unauthorized();
 
-		var person = await postOfficeContext.People.FirstOrDefaultAsync(item => item.Id == userAccount.PersonId);
-
-		if (person == null)
-			return Unauthorized();
-
-		if (person.Subscriber == null)
-		{
-			var subscriber = new Subscriber() { PersonId = person.Id,  };
-			await postOfficeContext.Subscribers.AddAsync(subscriber);
-
-			if (person.Role == Roles.Guest)
-				person.Role = Roles.Subscriber;
-
-			await postOfficeContext.SaveChangesAsync();
-		}
-		
-		var subscription = new Subscription()
-		{ PublicationId = publication.Id,
-			StartDate = DateTime.Now,
-			SubscriberId = person.Subscriber!.Id,
-			SubscriptionCompleted = false,
-			SubscriptionDuration = subscriptionViewModel.DurationOfSubscription };
-
-		await postOfficeContext.Subscriptions.AddAsync(subscription);
-		await postOfficeContext.SaveChangesAsync();
+		if (!(await _queriesService.SubscriptionRegistration(userAccount.Person, publication, subscriptionViewModel.DurationOfSubscription, subscriptionViewModel.Street, subscriptionViewModel.Home)))
+			return NotFound();
 
 		return View("PublicationsList", postOfficeContext.Publications.Take(8));
 	}

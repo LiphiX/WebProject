@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database.Configurations;
-using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.Sections;
 
 namespace PostOffice.Models.Entities.User;
 //Класс, который описывает структуру данных для подписчика.

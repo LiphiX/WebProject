@@ -1,5 +1,5 @@
 ﻿using ModelsLibrary.Infrastructure;
-using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.Sections;
 
 namespace PostOffice.Infrastructure.Fabrics;
 public static class AddressFabric
@@ -42,11 +42,11 @@ public static class AddressFabric
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     };
 
-    public static Address Fabric(Selection selection)
+    public static Address Fabric(Section selection)
     {
         string streetName = Streets[UtilsMethods.RandomValue(0, Streets.Length - 1)];
         string character = _letters[UtilsMethods.RandomValue(0, _letters.Length - 1)];
 
-        return new() { Street = $"{streetName}", Home = $"{UtilsMethods.RandomValue(10, 99)}{character}", SelectionId = selection.Id };
+        return new() { Street = $"{streetName}", Home = $"{UtilsMethods.RandomValue(10, 99)}{character}", SectionId = selection.Id };
     }
 }

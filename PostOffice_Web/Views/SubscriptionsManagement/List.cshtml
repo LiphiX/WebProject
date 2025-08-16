@@ -1,0 +1,41 @@
+﻿@model List<Subscription>
+
+<div class="d-flex align-items-center flex-column">
+	<h1>Данные о подписках на момент @($"{DateTime.Now:dd.MM.yyyy}").</h1>
+	<div class="table-responsive">
+		<table class="table table-dark table-hover table-striped table-bordered rounded-5">
+			<thead>
+			<td>Номер</td>
+			<td>Наименование</td>
+			<td>Стоимость</td>
+			<td>Тип издания</td>
+			<td>ФИО подписчика</td>
+			<td>Длительность подписки</td>
+			<td>Дата начала</td>
+			<td>Состояние</td>
+			<td>Действие</td>
+			</thead>
+			@{
+				var iteration = 0;
+			}
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@(iteration + 1)</td>
+					<td class="text-overflow">@item.Publication.Title</td>
+					<td>@item.Publication.Cost</td>
+					<td>@item.Publication.TypeOfPublication.Name</td>
+					<td>@($"{item.Subscriber.Person.Surname} {item.Subscriber.Person.Name[0]}. {item.Subscriber.Person.Patronymic[0]}.")</td>
+					<td>@(item.SubscriptionDuration) мес.</td>
+					<td>@($"{item.StartDate:dd.MM.yyyy}")</td>
+					<td>@(item.SubscriptionCompleted ? "Одобрено" : "Рассматривается")</td>
+					<td>
+						<a asp-controller="SubscriptionsManagement" asp-action="Approve" asp-route-id="@item.Id" id="approve" role="button" class="btn btn-outline-light">Одобрить</a>
+						<a asp-controller="SubscriptionsManagement" asp-action="Decline" asp-route-id="@item.Id" id="decline" role="button" class="btn btn-outline-light">Отклонить</a>
+					</td>
+				</tr>
+				iteration++;
+			}
+		</table>
+	</div>
+</div>

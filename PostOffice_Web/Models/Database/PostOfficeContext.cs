@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Infrastructure;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.Sections;
 using PostOffice.Models.Entities.User;
 using PostOffice.Models.Entities.Users;
+using PostOffice.Models.Services;
 
 namespace PostOffice.Models.Database;
 public class PostOfficeContext : DbContext
@@ -16,7 +17,7 @@ public class PostOfficeContext : DbContext
 
     public DbSet<Person> People => Set<Person>();
 
-    public DbSet<Selection> Selections => Set<Selection>();
+    public DbSet<Section> Sections => Set<Section>();
     
     public DbSet<Address> Addresses => Set<Address>();
 

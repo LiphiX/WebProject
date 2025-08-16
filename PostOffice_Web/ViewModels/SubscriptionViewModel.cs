@@ -11,10 +11,13 @@ public class SubscriptionViewModel
 	public string TypeOfPublication { get; set; }
 	public string? ImageAddress { get; set; }
 
-	public SelectList Addresses { get; set; }
+	public SelectList Streets { get; set; }
 
-	[Required(ErrorMessage = "Требуется указать адрес проживания.")]
-	public string Address { get; set; }
+	[Required(ErrorMessage = "Требуется указать наименование улицы.")]
+	public string Street { get; set; }
+
+	[Required(ErrorMessage = "Требуется указать номер дома.")]
+	public string Home { get; set; }
 
 	[Range(1, 24, ErrorMessage = "Длительность подписки не может быть менее 1 или более 24 месяцев.")]
 	[Required(ErrorMessage = "Требуется указать длительность подписки!")]

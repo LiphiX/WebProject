@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PostOffice.Models.Entities.Selections;
+using PostOffice.Models.Entities.Sections;
 
 namespace PostOffice.Models.Database.Configurations;
 public class AddressConfiguration : IEntityTypeConfiguration<Address>
@@ -8,7 +8,7 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
     public void Configure(EntityTypeBuilder<Address> builder)
     {
         builder
-            .HasOne(item => item.Selection)
+            .HasOne(item => item.Section)
             .WithMany(item => item.Addresses);
 
         builder

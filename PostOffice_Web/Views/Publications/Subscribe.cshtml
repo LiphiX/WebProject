@@ -29,10 +29,16 @@
 			</div>
 
 			<div class="mb-2">
-				<label asp-for="Address">Адрес проживания:</label>
-				<select asp-for="Address" asp-items="@Model.Addresses" class="form-select">
+				<label asp-for="Street">Улица:</label>
+				<select asp-for="Street" asp-items="@Model.Streets" class="form-select">
 					<option disabled>Адрес проживания</option>
 				</select>
+			</div>
+
+			<div class="mb-2">
+				<label asp-for="Home">Номер дома:</label>
+				<input asp-for="Home" class="form-control"/>
+				<span asp-validation-for="Home" class="text-danger"></span>
 			</div>
 
 			<button type="submit" class="btn btn-primary">Подписаться</button>
