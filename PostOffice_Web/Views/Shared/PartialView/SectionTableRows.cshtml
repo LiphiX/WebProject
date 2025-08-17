@@ -7,6 +7,6 @@
 }
 @foreach(var item in Model)
 {
-	item.RowNumber = ++iteration;
+	item.RowNumber += ++iteration;
 	@await Html.PartialAsync("~/Views/Shared/PartialView/SectionTableRow.cshtml", item);
 }

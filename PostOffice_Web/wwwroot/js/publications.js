@@ -1,7 +1,6 @@
 ﻿window.addEventListener("DOMContentLoaded", () => {
     var numberOfDownloads = 1;
     function uploadData(number) {
-        console.log("error");
         fetch(`/Publications/UploadData/${numberOfDownloads}`, {
             method: 'GET',
             credentials: 'include',

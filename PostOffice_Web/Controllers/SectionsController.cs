@@ -36,18 +36,19 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 			return NotFound();
 
 		//Сохранение очередные 10 строк участков для последующего отображения в табличном формате.
-		var sections = postOfficeContext.Sections.Skip(numberOfDownload).Take(10).Select(item => new SectionViewModel
+		var sections = postOfficeContext.Sections.Skip(numberOfDownload * 10).Take(10).Select(item => new SectionViewModel
 		{
 			Id = item.Id,
+			RowNumber = numberOfDownload*10,
 			AddressCount = _queriesService.AddressCountOfSection(item.Id),
 			SubscriberCount = _queriesService.SubscriberCountOfSection(item.Id),
 			SubscriptionCount = _queriesService.SubscriptionCountOfSection(item.Id),
 			AppointmentPostman = item.Postman!,
 			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.User.Roles.Postman).ToList()
 		}).ToList();
-
+		
 		//Отправка частичного представления набора карт.
-		return PartialView("~/Views/Shared/PartialView/Cards.cshtml", sections);
+		return PartialView("~/Views/Shared/PartialView/SectionTableRows.cshtml", sections);
 	}
 
 	[HttpPost]

@@ -1,5 +1,4 @@
 ﻿window.addEventListener("DOMContentLoaded", () => {
-    downloadNumber = 1;
     $("select").change((event) => {
         var option = $("option:selected", event.target);
 
@@ -22,5 +21,21 @@
             .catch(error => {
                 console.log("Возникла ошибка!");
             })
+    })
+
+    downloadNumber = 1;
+    $("#uploadButton").click((event) => {
+        fetch(`/Sections/UploadData/${downloadNumber}`, {
+            method: 'GET',
+            credentials: 'include',
         })
+            .then(response => response.text())
+            .then(data => {
+                downloadNumber++;
+                $(".table tbody").append(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    })
  });
