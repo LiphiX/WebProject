@@ -114,7 +114,10 @@ main{
     background: #212529;
     border: 1px solid #495057;
     color: white;
-
+    background-image: url('/images/selectImage.svg');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 25px;
 }
 
 .form-label{

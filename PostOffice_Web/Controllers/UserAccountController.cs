@@ -32,15 +32,16 @@ public class UserAccountController(PostOfficeContext postOfficeContext) : Contro
 			return View("Registration", viewModel);
 
 
-		Person person = new() { Surname = viewModel.Surname, Name = viewModel.Name, Patronymic = viewModel.Patronymic, Role = Roles.Guest };
-		await postOfficeContext.People.AddAsync(person);
+		Person person = (await postOfficeContext.People.FirstOrDefaultAsync(item => item.Surname == viewModel.Surname && item.Name == viewModel.Name && item.Patronymic == viewModel.Patronymic))!;
+		if (person == null)
+			await postOfficeContext.People.AddAsync(new() { Surname = viewModel.Surname, Name = viewModel.Name, Patronymic = viewModel.Patronymic, Role = Roles.Guest });
 
 		UserAccount userAccount = new() { Login = viewModel.Login, Password = viewModel.Password, PersonId = person.Id };
-		await _userService.AddAsync(userAccount);
+		await _userService.AddAsync(new() { Login = viewModel.Login, Password = viewModel.Password, PersonId = person!.Id });
 
 		//HttpContext.Session.SetString("SessionId", Guid.NewGuid().ToString());
 
-		await UserAuthenticate(userAccount);
+		await UserAuthenticate(userAccount!);
 
 		return Redirect("/Home/Index");
 	}

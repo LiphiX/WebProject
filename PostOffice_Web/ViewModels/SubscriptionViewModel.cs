@@ -1,16 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace PostOffice.ViewModels;
 public class SubscriptionViewModel
 {
+	[ValidateNever]
 	public int PublicationId { get; set; }
+	[ValidateNever]
 	public string Title { get; set; }
+	[ValidateNever]
 	public string? Author { get; set; }
+	[ValidateNever]
 	public int Cost { get; set; }
+	[ValidateNever]
 	public string TypeOfPublication { get; set; }
+	[ValidateNever]
 	public string? ImageAddress { get; set; }
-
+	[ValidateNever]
 	public SelectList Streets { get; set; }
 
 	[Required(ErrorMessage = "Требуется указать наименование улицы.")]

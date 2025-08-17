@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
 using PostOffice.Models.Entities.Sections;
@@ -8,23 +9,31 @@ using PostOffice.Models.Entities.Users;
 namespace PostOffice.Models.Services;
 public class QueriesService(PostOfficeContext context)
 {
+
 	public async Task<bool> SubscriptionRegistration(Person person, Publication publication, int subcsriptionDuration, string street, string home)
 	{
 		if (person == null || publication == null)
 			return false;
 
-		Address address = new() { Street = street, Home = home };
-		await context.Addresses.AddAsync(address);
-		await context.SaveChangesAsync();
+		Address address = (await context.Addresses.FirstOrDefaultAsync(item => item.Street == street && item.Home == home))!;
+		if (address == null) {
+			address = new() { Street = street, Home = home, SectionId = context.Addresses.Where(item => item.Street == street).First().SectionId };
+			await context.Addresses.AddAsync(address);
+			await context.SaveChangesAsync();
+		}
 
-		Subscriber subscriber = new() { PersonId = person.Id, AddressId = address.Id };
-		await context.Subscribers.AddAsync(subscriber);
-		await context.SaveChangesAsync();
+		Subscriber subscriber = context.Subscribers.FirstOrDefault(item => item.PersonId == person.Id)!;
+		if (subscriber == null)
+		{
+			subscriber = new() { PersonId = person.Id, AddressId = address.Id };
+			await context.Subscribers.AddAsync(subscriber);
+			await context.SaveChangesAsync();
+		}
 
 		Subscription subscription = new() { PublicationId = publication.Id, StartDate = DateTime.Now, SubscriberId = subscriber.Id, SubscriptionCompleted = false, SubscriptionDuration = subcsriptionDuration };
 		await context.Subscriptions.AddAsync(subscription);
 
-		if (person.Role != Roles.Guest)
+		if (person.Role == Roles.Guest)
 			person.Role = Roles.Subscriber;
 
 		await context.SaveChangesAsync();
