@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="wwwroot\images\animations\" />
+    <Folder Include="Views\Shared\PartialView\SubscriptionsManagement\" />
   </ItemGroup>
 
 </Project>

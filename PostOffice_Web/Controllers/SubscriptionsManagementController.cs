@@ -8,8 +8,13 @@ namespace PostOffice.Controllers;
 public class SubscriptionsManagementController(PostOfficeContext postOfficeContext) : Controller
 {
 	[Authorize(Roles = "PostalOperator,Director")]
-	public IActionResult List() => View("List", postOfficeContext.Subscriptions.ToList());
+	public IActionResult List()
+	{
+		
+		return View("List", postOfficeContext.Subscriptions.ToList());
+	}
 
+	[Route("/SubscriptionsManagement/Approve/{id}")]
 	[Authorize(Roles = "PostalOperator,Director")]
 	public async Task<IActionResult> Approve(int id)
 	{
@@ -20,9 +25,11 @@ public class SubscriptionsManagementController(PostOfficeContext postOfficeConte
 		subscription.SubscriptionCompleted = true;
 		await postOfficeContext.SaveChangesAsync();
 
-		return View("List", postOfficeContext.Subscriptions.ToList());
+		//return View("List", postOfficeContext.Subscriptions.ToList());
+		return Ok();
 	}
 
+	[Route("/SubscriptionsManagement/Decline/{id}")]
 	[Authorize(Roles = "PostalOperator,Director")]
 	public async Task<IActionResult> Decline(int id)
 	{
@@ -33,6 +40,7 @@ public class SubscriptionsManagementController(PostOfficeContext postOfficeConte
 		postOfficeContext.Subscriptions.Remove(subscription);
 		await postOfficeContext.SaveChangesAsync();
 
-		return View("List", postOfficeContext.Subscriptions.ToList());
+		//return View("List", postOfficeContext.Subscriptions.ToList());
+		return Ok();
 	}
 }
