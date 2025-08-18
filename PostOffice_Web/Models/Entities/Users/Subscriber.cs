@@ -2,7 +2,7 @@
 using PostOffice.Models.Database.Configurations;
 using PostOffice.Models.Entities.Sections;
 
-namespace PostOffice.Models.Entities.User;
+namespace PostOffice.Models.Entities.Users;
 //Класс, который описывает структуру данных для подписчика.
 [EntityTypeConfiguration(typeof(SubscriberConfiguration))]
 public class Subscriber

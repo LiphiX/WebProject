@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.ViewModels;
 public class SectionViewModel

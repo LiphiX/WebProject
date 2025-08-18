@@ -2,7 +2,7 @@
 using PostOffice.Infrastructure;
 using PostOffice.Models.Entities;
 using PostOffice.Models.Entities.Sections;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 using PostOffice.Models.Entities.Users;
 using PostOffice.Models.Services;
 

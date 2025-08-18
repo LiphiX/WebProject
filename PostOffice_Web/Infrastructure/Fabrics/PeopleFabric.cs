@@ -1,5 +1,5 @@
 ﻿using ModelsLibrary.Infrastructure;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Infrastructure.Fabrics
 {

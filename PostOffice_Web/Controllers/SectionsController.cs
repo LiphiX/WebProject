@@ -22,7 +22,7 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 			SubscriberCount = _queriesService.SubscriberCountOfSection(item.Id),
 			SubscriptionCount = _queriesService.SubscriptionCountOfSection(item.Id),
 			AppointmentPostman = item.Postman!,
-			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.User.Roles.Postman).ToList()
+			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).ToList()
 		}).ToList();
 
 		return View("List", sections);
@@ -44,7 +44,7 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 			SubscriberCount = _queriesService.SubscriberCountOfSection(item.Id),
 			SubscriptionCount = _queriesService.SubscriptionCountOfSection(item.Id),
 			AppointmentPostman = item.Postman!,
-			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.User.Roles.Postman).ToList()
+			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).ToList()
 		}).ToList();
 		
 		//Отправка частичного представления набора карт.
@@ -59,7 +59,7 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 		if (section == null)
 			return NotFound();
 
-		var postman = await postOfficeContext.People.Where(item => item.Role == Models.Entities.User.Roles.Postman).FirstOrDefaultAsync(item => item.Id == viewModel.postmanId);
+		var postman = await postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).FirstOrDefaultAsync(item => item.Id == viewModel.postmanId);
 		if (postman == null)
 			return NotFound();
 

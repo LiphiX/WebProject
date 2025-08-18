@@ -1,0 +1,28 @@
+﻿@using PostOffice.Models.Entities.Users
+@model List<Person>
+
+<div class="d-flex align-items-center flex-column">
+	<h1>Данные о почтовых операторах на момент @($"{DateTime.Now:dd.MM.yyyy}").</h1>
+	<table class="table table-dark table-hover table-striped table-bordered rounded-5">
+		<thead>
+			<td>Номер</td>
+			<td>ФИО сотрудника</td>
+		</thead>
+		<tbody>
+			@{
+				var iteration = 0;
+			}
+			@foreach(var item in Model)
+			{
+				<tr data-id="@item.Id">
+					<td>@(++iteration)</td>
+					<td>@item.FullName</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<div class="text-center w-100 mb-4">
+		<button id="uploadButton" class="btn btn-primary w-50">Загрузить</button>
+	</div>
+</div>

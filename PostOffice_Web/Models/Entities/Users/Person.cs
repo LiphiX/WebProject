@@ -3,7 +3,7 @@ using PostOffice.Models.Database.Configurations;
 using PostOffice.Models.Entities.Sections;
 using PostOffice.Models.Entities.Users;
 
-namespace PostOffice.Models.Entities.User;
+namespace PostOffice.Models.Entities.Users;
 //Класс, который описывает структуру данных для зарегистрированных в приложении людей.
 [EntityTypeConfiguration(typeof(PersonConfiguration))]
 public class Person

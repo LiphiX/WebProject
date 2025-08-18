@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using PostOffice.Models;
 using PostOffice.Models.Database;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 using PostOffice.Models.Entities.Users;
 using PostOffice.ViewModels;
 using System.Security.Claims;
@@ -33,8 +33,7 @@ public class UserAccountController(PostOfficeContext postOfficeContext) : Contro
 
 
 		Person person = (await postOfficeContext.People.FirstOrDefaultAsync(item => item.Surname == viewModel.Surname && item.Name == viewModel.Name && item.Patronymic == viewModel.Patronymic))!;
-		if (person == null)
-			await postOfficeContext.People.AddAsync(new() { Surname = viewModel.Surname, Name = viewModel.Name, Patronymic = viewModel.Patronymic, Role = Roles.Guest });
+		await postOfficeContext.People.AddAsync(new() { Surname = viewModel.Surname, Name = viewModel.Name, Patronymic = viewModel.Patronymic, Role = Roles.Guest });
 
 		UserAccount userAccount = new() { Login = viewModel.Login, Password = viewModel.Password, PersonId = person.Id };
 		await _userService.AddAsync(new() { Login = viewModel.Login, Password = viewModel.Password, PersonId = person!.Id });

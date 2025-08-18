@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Configurations;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models.Entities.Users;
 //Класс, который описывает структуру данных для учётной записи пользователя.

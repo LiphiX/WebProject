@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
 using PostOffice.Models.Entities.Sections;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Models.Services;

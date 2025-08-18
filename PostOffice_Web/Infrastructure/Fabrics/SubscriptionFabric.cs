@@ -1,6 +1,6 @@
 ﻿using ModelsLibrary.Infrastructure;
 using PostOffice.Models.Entities;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 
 namespace PostOffice.Infrastructure.Fabrics;
 public static class SubscriptionFabric

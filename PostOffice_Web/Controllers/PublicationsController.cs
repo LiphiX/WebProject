@@ -6,7 +6,7 @@ using PostOffice.Infrastructure.Fabrics;
 using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
 using PostOffice.Models.Entities.Sections;
-using PostOffice.Models.Entities.User;
+using PostOffice.Models.Entities.Users;
 using PostOffice.Models.Services;
 using PostOffice.ViewModels;
 using System.Security.Claims;

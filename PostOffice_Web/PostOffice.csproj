@@ -14,6 +14,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Shared\PartialView\SubscriptionsManagement\" />
+    <Folder Include="Views\Shared\PartialView\Staff\" />
   </ItemGroup>
 
 </Project>

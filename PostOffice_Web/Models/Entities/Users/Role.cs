@@ -2,7 +2,7 @@
 using PostOffice.Models.Database.Configurations;
 
 
-namespace PostOffice.Models.Entities.User;
+namespace PostOffice.Models.Entities.Users;
 [EntityTypeConfiguration(typeof(RoleConfiguration))]
 public class Role
 {

@@ -1,4 +1,4 @@
-﻿namespace PostOffice.Models.Entities.User;
+﻿namespace PostOffice.Models.Entities.Users;
 
 public enum Roles
 {
