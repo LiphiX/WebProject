@@ -1,0 +1,46 @@
+﻿@using PostOffice.ViewModels
+
+@model MainReportViewModel
+
+<div class="d-flex justify-content-center align-items-center">
+	<div class="d-block">
+		<p>На момент @DateTime.Now в составе почтовом отделении состоят @Model.PostmanCount почтальонов.</p>
+		<p>Количество обслуживаемых участков: @Model.Sections.Count()</p>
+		<p>Количество изданий, доставляемых подписчикам: @Model.DeliveredPublicationsCount</p>
+
+		<table class="table table-dark table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Идентификатор участка</th>
+					<th>ФИО почтальона</th>
+					<th>Количество доставляемых изданий</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model.Sections)
+				{
+					<tr>
+						<th>@item.Id</th>
+						<th>@item.Postman.FullName</th>
+						<th>@item.Addresses.Select(item => item.Subscribers.Select(item => item.Subscriptions.Where(item => item.SubscriptionCompleted).Count()).Sum()).Sum()</th>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+		<table class="table table-dark table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Номер</th>
+					<th>Наименование издания</th>
+					<th>Тип издания</th>
+					<th>Автор</th>
+					<th>Средняя продолжительность подписки</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
+</div>

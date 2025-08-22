@@ -4,7 +4,7 @@ using PostOffice.Models.Database;
 using PostOffice.Models.Entities;
 using PostOffice.Models.Entities.Sections;
 using PostOffice.Models.Entities.Users;
-using PostOffice.Models.Entities.Users;
+using PostOffice.Models.Reports;
 
 namespace PostOffice.Models.Services;
 public class QueriesService(PostOfficeContext context)
@@ -110,4 +110,32 @@ public class QueriesService(PostOfficeContext context)
 			.Select(item => item.Subscribers.Count())
 			.Sum();
 	}
+
+	public List<Query01> NumberPublications() => context.Publications
+		.GroupBy(item => item.Title)
+		.Select(item => new Query01 {
+			Title = item.Key,
+			Count = item.Count(),
+	}).ToList();
+
+	public int PostmansCount() => context.People.Where(item => item.Role == Roles.Postman).Count();
+
+	//public List<Publication> IssuedPublications(int id) { }
+
+	public Section SectionWithMaxSubscriptions() => context.Sections.First();
+
+	public List<Query06> AverageSubscriptionDuration()
+	{
+		var list = context.Publications.GroupBy(item => item.Title).Select(item => new Query06
+		{
+			Title = item.Key,
+			Average = item.Average(item => item.Subscriptions.Sum(item => item.SubscriptionDuration))
+		}).ToList();
+
+		return list;
+	}
+
+	public int IssuedPublicationsCount() => context.Subscriptions.Where(item => item.SubscriptionCompleted).Select(item => item.Publication).Count();
+
+	public int ServicedSectionsCount() => context.Sections.Where(item => item.Postman != null).Count();
 }

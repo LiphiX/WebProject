@@ -105,7 +105,7 @@
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center align-content-center col-md-auto flex-grow-1">
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-start ps-5 pe-5 col-md-auto flex-grow-1">
                             <ul class="navbar-nav">
                                 @if (User.IsInRole("Director"))
                                 {
@@ -155,32 +155,20 @@
 
                                         <ul class="dropdown-menu dropdown-menu-dark">
                                             <li>
-                                                <a class="dropdown-item" asp-page="/Reports/Query01">
-                                                    Пациенты, фамилия которых начинается с заданной буквы кириллицы.
+                                                <a class="dropdown-item" asp-controller="Reports" asp-action="Requests">
+                                                    Запросы
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a class="dropdown-item" asp-page="/Work/Reports/WeightsAllocationReport">
-                                                    Доктора с заданной специальностью.
+                                                <a class="dropdown-item" asp-controller="Reports" asp-action="Information">
+                                                    Справка
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a class="dropdown-item" asp-page="/Work/Reports/AgesAllocationReport">
-                                                    Доктора с заданным размером оплаты за один приём.
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a class="dropdown-item" asp-page="">
-                                                    Пациенты, возраст которых входит в заданный диапазон.
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a class="dropdown-item" asp-page="">
-                                                    Приёмы заданной даты.
+                                                <a class="dropdown-item" asp-controller="Reports" asp-action="MainReport">
+                                                    Отчёт доставки изданий.
                                                 </a>
                                             </li>
                                         </ul>

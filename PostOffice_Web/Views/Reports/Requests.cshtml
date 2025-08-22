@@ -1,0 +1,79 @@
+﻿@using PostOffice.ViewModels
+
+@model RequestsViewModel
+
+<div class="d-flex align-items-start">
+	<div class="nav nav-pills flex-column me-3 navbar-dark" id="requestsTab" role="tablist" aria-orientation="vertical">
+		<button class="nav-link nav-item active"  aria-current="page" data-bs-toggle="pill" data-bs-target="#request01" type="button" role="tab" aria-controls="request01" aria-selected="true">Количество каждого издания</button>
+		<button class="nav-link nav-item" aria-current="page" data-bs-toggle="pill" data-bs-target="#request02" type="button" role="tab" aria-controls="request02" aria-selected="false">Обслужвающий участок почтальон</button>
+		<button class="nav-link nav-item" aria-current="page" data-bs-toggle="pill" data-bs-target="#request03" type="button" role="tab" aria-controls="request03" aria-selected="false">Количество почтальонов в отделении</button>
+		<button class="nav-link nav-item" aria-current="page" data-bs-toggle="pill" data-bs-target="#request05" type="button" role="tab" aria-controls="request05" aria-selected="false">Участок с максимальным количеством изданий</button>
+		<button class="nav-link nav-item" aria-current="page" data-bs-toggle="pill" data-bs-target="#request06" type="button" role="tab" aria-controls="request06" aria-selected="false">Средняя продолжительность подписки на каждое издание</button>
+	</div>
+	
+	<div class="tab-content" id="tabContent">
+		<div id="request01" class="tab-pane fade show active" role="tabpanel">
+			<table class="table table-dark table-hover table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Номер</th>
+						<th>Наименование издания</th>
+						<th>Количество изданий</th>
+					</tr>
+				</thead>
+				<tbody>
+					@{
+						var iteration = 0;
+					}
+					@foreach(var item in Model.NumberOfEachPublications)
+					{
+						<tr>
+							<th>@(iteration+1)</th>
+							<th>@item.Title</th>
+							<th>@item.Count</th>
+						</tr>
+
+						iteration++;
+					}
+				</tbody>
+			</table>
+		</div>
+		<div id="request02" class="tab-pane fade" role="tabpanel">
+			<form>
+				<h1>Форма</h1>
+			</form>
+		</div>
+		<div id="request03" class="tab-pane fade" role="tabpanel">
+			<h3>В составе почтового отделения состоят @Model.PostmansCount почтальонов.</h3>
+		</div>
+		<div id="request05" class="tab-pane fade" role="tabpanel">
+			<h3>Участок с идентификатором @Model.SectionWithMaxPublicationsNumber.Id содержит максимальное количество подписок на экземпляры изданий: @Model.SectionWithMaxPublicationsNumber.Addresses.Select(item => item.Subscribers.Select(item => item.Subscriptions.Count).Sum()).Sum()</h3>
+		</div>
+		<div id="request06" class="tab-pane fade" role="tabpanel">
+			<table class="table table-dark table-hover table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Номер</th>
+						<th>Наименование издания</th>
+						<th>Средняя продолжительность</th>
+					</tr>
+				</thead>
+				<tbody>
+					@{
+						iteration = 0;
+					}
+					@foreach (var item in Model.AverageDurationOfSubscription)
+					{
+						<tr>
+							<th>@(iteration+1)</th>
+							<th>@item.Title</th>
+							<th>@($"{item.Average:f3}")</th>
+						</tr>
+
+						iteration++;
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

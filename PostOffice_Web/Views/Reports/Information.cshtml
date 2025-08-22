@@ -1,0 +1,20 @@
+﻿@using PostOffice.ViewModels
+
+@model InformationViewModel
+
+<div class="w-100">
+	<div class="d-flex justify-content-center align-items-center flex-column">
+		<h1>СПРАВКА</h1>
+	
+		<ul>
+			<li class="d-flex">
+				<p class="me-2">Количество подписчиков: </p>
+				<p>@Model.SubscribersCount </p>
+			</li>
+			<li class="d-flex">
+				<p class="me-2">Количество выданных изданий: </p>
+				<p>@Model.PublicationsCount </p>
+			</li>
+		</ul>
+	</div>
+</div>
