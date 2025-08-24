@@ -30,9 +30,13 @@ public class StaffController(PostOfficeContext postOfficeContext) : Controller
 	[Authorize(Roles = "Director")]
 	public IActionResult Postmans()
 	{
-		return View("Postmans", postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).ToList());
+		var sections = postOfficeContext.Sections.ToList();
+		var list = postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).ToList();
+		return View("Postmans", list);
 	}
 
+	[HttpGet]
+	[Authorize(Roles = "Director")]
 	public async Task<IActionResult> DismissPostman(int id)
 	{
 		var person = await postOfficeContext.People.FirstOrDefaultAsync(item => item.Id == id);
@@ -40,6 +44,11 @@ public class StaffController(PostOfficeContext postOfficeContext) : Controller
 			return NotFound();
 
 		person.Role = Models.Entities.Users.Roles.Guest;
+
+		var list = person.Selections.Where(item => item.Postman != null).ToList();
+		foreach (var item in list)
+			item.PostmanId = postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).First().Id;
+
 		await postOfficeContext.SaveChangesAsync();
 
 		return Ok();

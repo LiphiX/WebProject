@@ -1,0 +1,16 @@
+﻿@using PostOffice.ViewModels
+
+@model ReceiptViewModel
+
+<div class="d-flex justify-content-center align-items-center">
+	<div class="d-block fs-4">
+		<p><span class="fs-1 fw-bold">АБОНЕМЕНТ</span> на "@Model.Title" типа "@Model.TypeOfPublication"</p>
+		<p>Длительность подписки: <span class="fw-bold">@Model.SubscriptionDuration</span>. Подписка истечёт: @($"{DateTime.Today.AddMonths(Model.SubscriptionDuration):dd.MM.yyyy}").</p>
+			<div class="mt-5 mb-1">
+				<p>Подписка оформлена на пользователя (Фамилия и инициалы): <span class="fw-bold">@($"{Model.SubscriberFullName}")</span></p>
+			<p>Издания доставляются по адресу: @Model.Street @Model.Home</p>
+			</div>
+			<p class="fs-6">Автор издания: @($"{Model.Author ?? "Неизвестно."}")</p>
+			<p class="fs-6">Стоимость подписки: @Model.Cost</p>
+	</div>
+</div>

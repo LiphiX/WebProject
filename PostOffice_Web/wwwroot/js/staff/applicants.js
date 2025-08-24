@@ -1,6 +1,6 @@
 ﻿window.addEventListener("DOMContentLoaded", () => {
 
-    $(".dismiss").click((event) => {
+    $(".accept").click((event) => {
 
         var recordId = $(event.target).parent().parent().attr('data-id');
 

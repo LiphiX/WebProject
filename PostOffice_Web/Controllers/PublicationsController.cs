@@ -95,6 +95,23 @@ public class PublicationsController(PostOfficeContext postOfficeContext) : Contr
 		if (!(await _queriesService.SubscriptionRegistration(userAccount.Person, publication, subscriptionViewModel.DurationOfSubscription, subscriptionViewModel.Street, subscriptionViewModel.Home)))
 			return NotFound();
 
-		return View("PublicationsList", postOfficeContext.Publications.Take(8));
+		return RedirectToAction("Receipt", new ReceiptViewModel() {
+			Title = subscriptionViewModel.Title,
+			SubscriberFullName = userAccount.Person.FullName,
+			Author = subscriptionViewModel.Author,
+			Cost = subscriptionViewModel.Cost,
+			TypeOfPublication = subscriptionViewModel.TypeOfPublication,
+			SubscriptionDuration = subscriptionViewModel.DurationOfSubscription,
+			Street = subscriptionViewModel.Street,
+			Home = subscriptionViewModel.Home,
+		});
+	}
+
+	[Authorize]
+	[HttpGet]
+	[Route("/Publications/Receipt")]
+	public IActionResult Receipt(ReceiptViewModel viewModel)
+	{
+		return View("Receipt", viewModel);
 	}
 }

@@ -9,9 +9,12 @@
 	<td>@Model.SubscriberCount</td>
 	<td>
 		<select asp-for="@Model.AppointmentPostman" class="btn btn-outline-light">
+			@if(Model.AppointmentPostman == null){
+				<option disabled="disabled" selected>Не обслуживается</option>
+			}
 			@foreach(var item in Model.Postmans)
 			{
-				if(item.Id == Model.AppointmentPostman.Id){
+				if(Model.AppointmentPostman != null && item.Id == Model.AppointmentPostman.Id){
 					<option value="@item.Id" selected>@item.FullName</option>
 				}
 				else{

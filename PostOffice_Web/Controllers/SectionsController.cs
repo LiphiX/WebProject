@@ -15,15 +15,7 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 	[Authorize(Roles="Director")]
 	public async Task<IActionResult> List()
 	{
-		var sections = postOfficeContext.Sections.Take(10).Select(item => new SectionViewModel
-		{
-			Id = item.Id,
-			AddressCount = _queriesService.AddressCountOfSection(item.Id),
-			SubscriberCount = _queriesService.SubscriberCountOfSection(item.Id),
-			SubscriptionCount = _queriesService.SubscriptionCountOfSection(item.Id),
-			AppointmentPostman = item.Postman!,
-			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).ToList()
-		}).ToList();
+		var sections = TakeSections(0);
 
 		return View("List", sections);
 	}
@@ -36,7 +28,14 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 			return NotFound();
 
 		//Сохранение очередные 10 строк участков для последующего отображения в табличном формате.
-		var sections = postOfficeContext.Sections.Skip(numberOfDownload * 10).Take(10).Select(item => new SectionViewModel
+		var sections = TakeSections(numberOfDownload);
+
+		//Отправка частичного представления набора карт.
+		return PartialView("~/Views/Shared/PartialView/SectionTableRows.cshtml", sections);
+	}
+
+	private List<SectionViewModel> TakeSections(int numberOfDownload) =>
+		postOfficeContext.Sections.Skip(numberOfDownload*10).Take(10).Select(item => new SectionViewModel
 		{
 			Id = item.Id,
 			RowNumber = numberOfDownload*10,
@@ -45,11 +44,7 @@ public class SectionsController(PostOfficeContext postOfficeContext) : Controlle
 			SubscriptionCount = _queriesService.SubscriptionCountOfSection(item.Id),
 			AppointmentPostman = item.Postman!,
 			Postmans = postOfficeContext.People.Where(item => item.Role == Models.Entities.Users.Roles.Postman).ToList()
-		}).ToList();
-		
-		//Отправка частичного представления набора карт.
-		return PartialView("~/Views/Shared/PartialView/SectionTableRows.cshtml", sections);
-	}
+		}).OrderBy(item => item.Id).ToList();
 
 	[HttpPost]
 	[Route("/Sections/Appointment/")]

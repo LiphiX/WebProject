@@ -19,9 +19,9 @@
 				<tr data-id="@item.Id">
 					<td>@(++iteration)</td>
 					<td>@item.FullName</td>
-					<td>@item.Role</td>
+					<td>@(item.Role == Roles.Guest ? "Гость" : "Подписчик")</td>
 					<td>
-						<a class="btn btn-outline-light dismiss">
+						<a class="btn btn-outline-light accept">
 							Принять
 						</a>
 					</td>
